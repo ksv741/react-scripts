@@ -1,0 +1,25 @@
+npm-debug.log
+yarn-error.log
+node_modules
+logs
+build
+dist
+temp
+tmp
+storage
+repo
+stats.json
+.tern-project
+.imdone
+.vscode
+coverage
+
+# osx
+.DS_Store
+
+# emacs
+*~
+\#*
+
+#idea
+.idea
