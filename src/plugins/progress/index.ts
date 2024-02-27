@@ -1,7 +1,7 @@
 import webpack from 'webpack';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getProgressPlugin = (options: WebpackOptions) => {
+const getProgressPlugin = (options: WebpackOptions) => {
   const {
     plugins: {
       progressPlugin,
@@ -14,3 +14,5 @@ export const getProgressPlugin = (options: WebpackOptions) => {
 
   return new webpack.ProgressPlugin(progressPlugin);
 };
+
+export default getProgressPlugin;

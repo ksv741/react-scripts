@@ -1,7 +1,7 @@
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../../../types';
+import type { WebpackOptions } from 'types';
 
-export const getImageLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
+const getImageLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
   const {
     loaders: {
       imageLoader,
@@ -21,3 +21,5 @@ export const getImageLoader = (options: WebpackOptions): webpack.RuleSetRule | n
     },
   };
 };
+
+export default getImageLoader;

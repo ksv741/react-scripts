@@ -1,7 +1,7 @@
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
-import type { WebpackOptions } from '../types';
+import type { WebpackOptions } from 'types';
 
-export const createDevServer = (options: WebpackOptions): DevServerConfiguration => {
+const createDevServer = (options: WebpackOptions): DevServerConfiguration => {
   const {
     port,
   } = options;
@@ -20,3 +20,5 @@ export const createDevServer = (options: WebpackOptions): DevServerConfiguration
     },
   };
 };
+
+export default createDevServer;

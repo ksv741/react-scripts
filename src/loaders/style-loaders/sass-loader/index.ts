@@ -1,8 +1,8 @@
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../../../types';
-import { getCssLoader } from '../css-loader';
+import type { WebpackOptions } from 'types';
+import getCssLoader from '../css-loader';
 
-export const getSassLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
+const getSassLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
   const {
     mode,
     loaders: {
@@ -30,3 +30,5 @@ export const getSassLoader = (options: WebpackOptions): webpack.RuleSetRule | nu
     ],
   };
 };
+
+export default getSassLoader;

@@ -1,9 +1,9 @@
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../types';
+import type { WebpackOptions } from 'types';
 
-export const getOptimization = (options: WebpackOptions): webpack.Configuration['optimization'] => {
+const getOptimization = (options: WebpackOptions): webpack.Configuration['optimization'] => {
   const {
     mode,
   } = options;
@@ -24,3 +24,5 @@ export const getOptimization = (options: WebpackOptions): webpack.Configuration[
     },
   };
 };
+
+export default getOptimization;

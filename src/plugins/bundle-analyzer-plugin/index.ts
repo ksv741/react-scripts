@@ -1,7 +1,7 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getBundleAnalyzerPlugin = (options: WebpackOptions) => {
+const getBundleAnalyzerPlugin = (options: WebpackOptions) => {
   const {
     analyze,
     plugins: {
@@ -15,3 +15,5 @@ export const getBundleAnalyzerPlugin = (options: WebpackOptions) => {
 
   return new BundleAnalyzerPlugin(analyzerPlugin);
 };
+
+export default getBundleAnalyzerPlugin;

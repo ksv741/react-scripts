@@ -1,8 +1,8 @@
 import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getCopyPlugin = (options: WebpackOptions) => {
+const getCopyPlugin = (options: WebpackOptions) => {
   const {
     paths,
     plugins: {
@@ -25,10 +25,12 @@ export const getCopyPlugin = (options: WebpackOptions) => {
           ],
         },
         to: path.resolve(paths.root, paths.build),
+        noErrorOnMissing: true,
       },
-
       ...copyPlugin?.patterns ?? [],
     ].filter(Boolean),
     options: copyPlugin?.options,
   });
 };
+
+export default getCopyPlugin;

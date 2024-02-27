@@ -22,6 +22,16 @@ declare module '*.scss' {
   export = content;
 }
 
+declare module '*.css' {
+  const content: Record<string, string>;
+  export = content;
+}
+
+declare module '*.sass' {
+  const content: Record<string, string>;
+  export = content;
+}
+
 declare module '*.svg' {
   import type React from 'react';
 

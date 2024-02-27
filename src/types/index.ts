@@ -12,10 +12,17 @@ import type { PostCSSLoaderOptions } from 'postcss-loader/dist/config';
 import type webpack from 'webpack';
 import type { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import type SassLoader from 'sass-loader';
+import type { Options as TsconfigPathsPluginOptions } from 'tsconfig-paths-webpack-plugin/lib/options';
+import type { Options as TsLoaderOptions } from 'ts-loader';
+
+type PackageJson = {
+  dependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+};
 
 type WebpackMode = 'development' | 'production';
 
-type WebpackMainLoaders = 'esbuild' | 'swc';
+type WebpackMainLoaders = 'babel' | 'esbuild' | 'swc' | 'ts-loader';
 
 type WebpackPaths = {
   entry: string[] | string;
@@ -130,11 +137,89 @@ declare namespace CssLoader {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace BabelLoader {
+  type CallerData = {
+    name: string;
+    supportsStaticESM?: boolean;
+    supportsDynamicImport?: boolean;
+    supportsTopLevelAwait?: boolean;
+    supportsExportNamespaceFrom?: boolean;
+  };
+
+  type MatchPatternFunc = (
+    filename: string,
+    context: { caller?: { name: string }; envName: string; dirname: string }
+  ) => boolean;
+  type MatchPattern = MatchPatternFunc | RegExp | string;
+
+  type EntryTarget = () => Record<string, unknown> | string ;
+  type EntryOptions = Record<string, unknown> | false | undefined;
+  type PluginEntry = EntryTarget | [EntryTarget, EntryOptions, string] | [EntryTarget, EntryOptions];
+  type PresetEntry = EntryTarget | [EntryTarget, EntryOptions, string] | [EntryTarget, EntryOptions];
+  type Options = {
+    cwd?: string;
+    caller?: CallerData;
+    filename?: string;
+    filenameRelative?: string;
+    code?: boolean;
+    ast?: boolean;
+    cloneInputAst?: boolean;
+    root?: string;
+    rootMode?: 'root' | 'upward-optional' | 'upward';
+    envName?: string;
+    configFile?: boolean | string;
+    babelrc?: boolean;
+    babelrcRoots?: MatchPattern | MatchPattern[] | boolean;
+    plugins?: PluginEntry[];
+    presets?: {
+      env: EntryOptions;
+      react: EntryOptions;
+      typescript: EntryOptions;
+    };
+    passPerPreset?: boolean;
+    targets?: Record<string, string> | string[] | string;
+    browserslistConfigFile?: boolean;
+    browserslistEnv?: string;
+    extends?: string;
+    env?: Record<string, unknown>;
+    overrides?: unknown[];
+    test?: MatchPattern | MatchPattern[];
+    include?: MatchPattern | MatchPattern[];
+    exclude?: MatchPattern | MatchPattern[];
+    ignore?: MatchPattern[];
+    only?: MatchPattern[];
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+    inputSourceMap?: webpack.Configuration['devtool'] | boolean; // todo
+    sourceMaps?: boolean | 'both' | 'inline';
+    sourceFileName?: string;
+    sourceRoot?: string;
+    sourceType?: 'module' | 'script' | 'unambiguous';
+    assumptions?: Record<string, boolean>;
+    highlightCode?: boolean;
+    wrapPluginVisitorMethod?: unknown;
+    parserOpts?: Record<string, unknown>;
+    generatorOpts?: Record<string, unknown>;
+    retainLines?: boolean;
+    compact?: boolean | 'auto';
+    minified?: boolean;
+    auxiliaryCommentBefore?: string;
+    auxiliaryCommentAfter?: string;
+    comments?: boolean;
+    shouldPrintComment?: (value: string) => boolean;
+    moduleIds?: boolean;
+    moduleId?: string;
+    getModuleId?: (name: string) => string;
+    moduleRoot?: string;
+  };
+}
+
 type WebpackOptions = {
   mode: WebpackMode;
   paths: WebpackPaths;
   port: number;
-  mainLoader: WebpackMainLoaders;
+  mainLoader?: WebpackMainLoaders;
+  svgLoader?: 'inline' | 'svgr';
   analyze: boolean;
   devtool?: webpack.Configuration['devtool'];
   plugins?: {
@@ -153,6 +238,7 @@ type WebpackOptions = {
     esbuildLoader?: EsbuildLoaderOptions | 'off';
     swcLoader?: SwcLoaderOptions | 'off';
     svgrLoader?: SvgrLoaderOptions | 'off';
+    inlineSvgLoader?: AssetsLoader.Options | 'off';
     styleLoader?: StyleLoader.Options | 'off';
     cssLoader?: CssLoader.Options | 'off';
     miniCssLoader?: MiniCssLoaderOptions | 'off';
@@ -161,7 +247,15 @@ type WebpackOptions = {
     sassLoader?: SassLoader.Options | 'off';
     imageLoader?: AssetsLoader.Options | 'off';
     fontLoader?: AssetsLoader.Options | 'off';
+    babelLoader?: BabelLoader.Options | 'off';
+    tsLoader?: TsLoaderOptions | 'off';
   };
+  resolvers?: {
+    plugins: {
+      tsConfigPathsPlugin?: TsconfigPathsPluginOptions | 'off';
+    };
+  };
+  cache?: webpack.Configuration['cache'] | 'off';
 };
 
 type WebpackEnv = {
@@ -177,4 +271,5 @@ export type {
   WebpackOptions,
   WebpackEnv,
   WebpackMainLoaders,
+  PackageJson,
 };

@@ -1,8 +1,8 @@
 import path from 'path';
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getEsbuildLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
+const getEsbuildLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
   const {
     paths,
     loaders: {
@@ -19,8 +19,11 @@ export const getEsbuildLoader = (options: WebpackOptions): webpack.RuleSetRule |
     loader: 'esbuild-loader',
     options: {
       loader: 'tsx',
+      jsx: 'automatic',
       ...esbuildLoader,
     },
     exclude: path.resolve(paths.root, 'node_modules'),
   };
 };
+
+export default getEsbuildLoader;

@@ -12,7 +12,10 @@
     "target": "ESNext",
     "lib": [
       "DOM"
-    ]
+    ],
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   "exclude": ["node_modules"]
 }
