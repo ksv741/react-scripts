@@ -1,7 +1,7 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getReactRefreshPlugin = (options: WebpackOptions) => {
+const getReactRefreshPlugin = (options: WebpackOptions) => {
   const {
     plugins: {
       reactRefreshPlugin,
@@ -17,3 +17,5 @@ export const getReactRefreshPlugin = (options: WebpackOptions) => {
     ...reactRefreshPlugin,
   });
 };
+
+export default getReactRefreshPlugin;

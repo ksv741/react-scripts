@@ -1,7 +1,7 @@
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getSvgLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
+const getSvgrLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
   const {
     loaders: {
       svgrLoader,
@@ -24,3 +24,5 @@ export const getSvgLoader = (options: WebpackOptions): webpack.RuleSetRule | nul
     }],
   };
 };
+
+export default getSvgrLoader;

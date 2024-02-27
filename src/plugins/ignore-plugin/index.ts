@@ -1,7 +1,7 @@
 import webpack from 'webpack';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getIgnorePlugin = (options: WebpackOptions) => {
+const getIgnorePlugin = (options: WebpackOptions) => {
   const {
     plugins: {
       ignorePlugin,
@@ -18,3 +18,5 @@ export const getIgnorePlugin = (options: WebpackOptions) => {
     ...ignorePlugin,
   });
 };
+
+export default getIgnorePlugin;

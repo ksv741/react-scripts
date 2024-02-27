@@ -1,9 +1,10 @@
 import path from 'path';
 
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../types';
+import type { WebpackOptions } from 'types';
+import getResolversPlugins from './plugins';
 
-export const createResolvers = (options: WebpackOptions): webpack.ResolveOptions => {
+const createResolvers = (options: WebpackOptions): webpack.ResolveOptions => {
   const {
     paths,
   } = options;
@@ -16,5 +17,8 @@ export const createResolvers = (options: WebpackOptions): webpack.ResolveOptions
       path.resolve(paths.root),
       path.resolve(paths.root, 'node_modules'),
     ],
+    plugins: getResolversPlugins(options),
   };
 };
+
+export default createResolvers;

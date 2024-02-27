@@ -13,10 +13,12 @@
   - [`Режим запуска`](#режим-запуска)
   - [`Конфигурация путей`](#конфигурация-путей)
   - [`Порт`](#порт)
-  - [`Загрузчик`](#загрузчик)
+  - [`Загрузчики`](#загрузчики)
   - [`Анализ`](#анализ)
   - [`Плагины`](#плагины)
   - [`Лоадеры`](#лоадеры)
+  - [`Resolvers`](#resolvers)
+  - [`Кэширование`](#кэширование)
 - [`Расширенная конфигурация`](#расширенная-конфигурация)
     
 ***
@@ -127,7 +129,8 @@ root.render(
     };
     port?: number;
     devtool?: string | false;
-    mainLoader?: 'esbuild' | 'swc';
+    mainLoader?: 'esbuild' | 'swc' | 'babel' | 'ts-loader';
+    svgLoader?: 'inline' | 'svgr';
     analyze?: boolean;
     plugins?: {
       htmlWebpackPlugin?: object | 'off';
@@ -142,16 +145,19 @@ root.render(
       analyzerPlugin?: object | 'off';
     }
     loaders?: {
-      esbuildLoader?: object | 'off';
-      swcLoader?: object | 'off';
-      svgrLoader?: object | 'off';
-      styleLoader?: object | 'off';
+      babelLoader?: object | 'off';
       cssLoader?: object | 'off';
-      postCssLoader?: object | 'off';
-      miniCssLoader?: object | 'off';
-      sassLoader?: object | 'off';
-      imageLoader?: object | 'off';
+      esbuildLoader?: object | 'off';
       fontLoader?: object | 'off';
+      imageLoader?: object | 'off';
+      inlineSvgLoader?: object | 'off';
+      miniCssLoader?: object | 'off';
+      postCssLoader?: object | 'off';
+      sassLoader?: object | 'off';
+      styleLoader?: object | 'off';
+      svgrLoader?: object | 'off';
+      swcLoader?: object | 'off';
+      tsLoader?: object | 'off';
     };
   }
 ```
@@ -186,9 +192,11 @@ root.render(
 - `port` - порт, в котором будет запускаться dev server, для `mode = 'production'` настройка игнорируется  
 По умолчанию: `3000`
 
-#### Загрузчик
-- `mainLoader` - главный загрузчик javascript/typescript файлов, доступны `esbuild` и `swc`   
+#### Загрузчики
+- `mainLoader` - главный загрузчик javascript/typescript файлов, доступны `esbuild`, `swc`, `babel`, `ts-loader`     
   По умолчанию: `esbuild`
+- `svgLoader` - загрузчик `svg` файлов, доступны `inline` - загрузка файла строкой, `svgr` - загрузка файла как React компонент.  
+  По умолчанию: `svgr`
 
 #### Анализ
 - `analyze` - запуск сервера на порту `8888`, для анализа сборки. Рекомендуется запускать совместно с `mode = 'production'`. Но допустим запуск и в режиме `development`  
@@ -285,9 +293,12 @@ root.render(
 - `loaders` - объект с настройками лоадеров
 
 Список используемых лоадеров:
-- [esbuild-loader](https://github.com/privatenumber/esbuild-loader) - лоадер для обработки `.tsx`, `.jsx`, `.ts`, `.js`  файлов, при указании настройки [`mainLoader: 'esbuild'`](#загрузчик)
-- [swc-loader](https://github.com/swc-project/pkgs/tree/main/packages/swc-loader) - лоадер для обработки `.tsx`, `.jsx`, `.ts`, `.js`  файлов, при указании настройки [`mainLoader: 'swc'`](#загрузчик)
+- [esbuild-loader](https://github.com/privatenumber/esbuild-loader) - лоадер для обработки `.tsx`, `.jsx`, `.ts`, `.js`  файлов, при указании настройки [`mainLoader: 'esbuild'`](#загрузчики)
+- [swc-loader](https://github.com/swc-project/pkgs/tree/main/packages/swc-loader) - лоадер для обработки `.tsx`, `.jsx`, `.ts`, `.js`  файлов, при указании настройки [`mainLoader: 'swc'`](#загрузчики)
+- [babel-loader](https://github.com/babel/babel-loader) - лоадер для обработки `.tsx`, `.jsx`, `.ts`, `.js`  файлов, при указании настройки [`mainLoader: 'babel'`](#загрузчики)
+- [ts-loader](https://github.com/TypeStrong/ts-loader) - лоадер для обработки `.tsx`, `.jsx`, `.ts`, `.js`  файлов, при указании настройки [`mainLoader: 'ts-loader'`](#загрузчики)
 - [@svgr/webpack](https://github.com/gregberge/svgr/tree/main/packages/webpack)- лоадер для обработки `.svg` файлов, для работы с файлами, как с React компонентами
+- [svg-inline-loader](https://webpack.js.org/guides/asset-modules/)- лоадер для загрузки `.svg` файлов, для строки
 - [style-loader](https://webpack.js.org/loaders/style-loader/) - лоадер для вставки стилей inline элементами в html, доступен в режиме `development`
 - [mini-css-loader](https://webpack.js.org/plugins/mini-css-extract-plugin/#loader-options), доступен в режиме `production` - лоадер для формирование стилей `.css` файлами
 - [css-loader](https://webpack.js.org/loaders/css-loader/) - лоадер для обработки `.css` файлов
@@ -304,7 +315,7 @@ root.render(
     loader: 'tsx',
   }
   ```
-- `swcLoader` - настройкаи для [swc-loader](https://swc.rs/docs/configuration/swcrc)  
+- `swcLoader` - настройки для [swc-loader](https://swc.rs/docs/configuration/swcrc)  
 По умолчанию:  
   ```js
    {
@@ -337,6 +348,18 @@ root.render(
       },
     },
   ```
+- `babelLoader` - настройки для [babel-loader](https://github.com/babel/babel-loader?tab=readme-ov-file#options)  
+По умолчанию:
+  ```js
+   {
+      presets: [
+        ['@babel/preset-env', { targets: 'defaults' }],
+        ['@babel/preset-react', { runtime: 'automatic' }],
+        ['@babel/preset-typescript'],
+      ],
+    }
+  ```
+- `tsLoader` - настройки для [ts-loader](https://github.com/TypeStrong/ts-loader?tab=readme-ov-file#loader-options)
 - `svgrLoader` - настройка для [@svgr/webpack](https://react-svgr.com/docs/webpack/#options)  
 По умолчанию: 
   ```js
@@ -344,6 +367,7 @@ root.render(
     icon: true,
   }
   ```
+- `inlineSvgLoader` - настройка для опции `generator` [Assets Modules](https://webpack.js.org/guides/asset-modules/)
 - `styleLoader` - настройка для [style-loader](https://webpack.js.org/loaders/style-loader/#options)  
 - `miniCssLoader` - настойка для [MiniCssExtractPlugin.loader](https://webpack.js.org/plugins/mini-css-extract-plugin/#loader-options)  
 - `cssLoader` - настройка для [css-loader](https://webpack.js.org/loaders/css-loader/#options)   
@@ -392,6 +416,37 @@ root.render(
   }
   ```
 
+### Resolvers
+- `resolver` - объект с настройками resolvers
+
+Список используемых плагинов:
+- [TsconfigPathsPlugin](https://github.com/dividab/tsconfig-paths-webpack-plugin) 
+
+Для настройки плагина необходимо передать объект с конфигурацией или строку `off` для того чтобы отключить плагин:
+
+- `tsConfigPathsPlugin` - настройки плагина [TsconfigPathsPlugin](https://github.com/dividab/tsconfig-paths-webpack-plugin?tab=readme-ov-file#options)  
+По умолчанию:
+  ```javascript
+  resolvers: {
+    plugins: {
+      tsConfigPathsPlugin: {
+        baseUrl: process.cwd()
+      }
+    }
+  }
+  ```
+  
+### Кэширование
+- `cache` - объект с настройками кэширования
+По умолчанию:
+  ```javascript
+  {
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename]
+      }
+    }
+  ```
 ### Расширенная конфигурация
 Если текущей кастомизации не достаточно или Вы хотите добавить/изменить какой-то плагин или загрузчик, 
 то это можно легко сделать, т.к. функция `createConfig` возвращает обычный объект с конфигурацией webpack, который можно изменить.

@@ -5,4 +5,4 @@ export type {
   WebpackPaths,
   WebpackMainLoaders,
 } from './types';
-export { createConfig } from './config';
+export { default as createConfig } from './config';

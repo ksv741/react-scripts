@@ -1,8 +1,8 @@
 import path from 'path';
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../types';
+import type { WebpackOptions } from 'types';
 
-export const createOutput = (options: WebpackOptions): webpack.Configuration['output'] => {
+const createOutput = (options: WebpackOptions): webpack.Configuration['output'] => {
   const {
     paths,
     mode,
@@ -27,3 +27,5 @@ export const createOutput = (options: WebpackOptions): webpack.Configuration['ou
 
   return isDev ? devOutput : productionOutput;
 };
+
+export default createOutput;

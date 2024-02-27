@@ -1,7 +1,7 @@
 import webpack from 'webpack';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getDefinePlugin = (options: WebpackOptions) => {
+const getDefinePlugin = (options: WebpackOptions) => {
   const {
     mode,
     plugins: {
@@ -20,3 +20,5 @@ export const getDefinePlugin = (options: WebpackOptions) => {
     ...definePlugin,
   });
 };
+
+export default getDefinePlugin;

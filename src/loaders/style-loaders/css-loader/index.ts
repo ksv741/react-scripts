@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, no-unsafe-optional-chaining, @typescript-eslint/no-unsafe-member-access, no-nested-ternary */
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../../../types';
+import type { WebpackOptions } from 'types';
 
-export const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
+const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
   const {
     mode,
     loaders: {
@@ -39,6 +39,11 @@ export const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
           options: {
             sourceMap: isDev,
             ...cssLoader,
+            modules: {
+              localIdentName: '[local]--[hash:5]',
+              // @ts-ignore
+              ...cssLoader?.modules,
+            },
           },
         },
       postCssLoader === 'off'
@@ -46,7 +51,9 @@ export const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
         : {
           loader: 'postcss-loader',
           options: {
+            ...postCssLoader,
             postcssOptions: {
+              ...postCssLoader?.postcssOptions,
               plugins: [
                 [
                   'postcss-preset-env',
@@ -57,11 +64,12 @@ export const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
                 ],
                 ...postCssLoader?.postcssOptions?.plugins ?? [],
               ].filter(Boolean),
-              ...postCssLoader?.postcssOptions,
             },
-            ...postCssLoader,
+            sourceMap: isDev,
           },
         },
     ].filter(Boolean),
   };
 };
+
+export default getCssLoader;

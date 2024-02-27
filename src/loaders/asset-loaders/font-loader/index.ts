@@ -1,7 +1,7 @@
 import type webpack from 'webpack';
-import type { WebpackOptions } from '../../../types';
+import type { WebpackOptions } from 'types';
 
-export const getFontLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
+const getFontLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
   const {
     loaders: {
       fontLoader,
@@ -21,3 +21,5 @@ export const getFontLoader = (options: WebpackOptions): webpack.RuleSetRule | nu
     },
   };
 };
+
+export default getFontLoader;

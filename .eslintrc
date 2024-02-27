@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "ksv741"
-  ]
+  "extends": "ksv741",
+  "rules": {
+    "@typescript-eslint/strict-boolean-expressions": "off"
+  }
 }

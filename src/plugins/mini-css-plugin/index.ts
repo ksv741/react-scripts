@@ -1,7 +1,7 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import type { WebpackOptions } from '../../types';
+import type { WebpackOptions } from 'types';
 
-export const getMiniCssPlugin = (options: WebpackOptions) => {
+const getMiniCssPlugin = (options: WebpackOptions) => {
   const {
     plugins: {
       miniCssPlugin,
@@ -18,3 +18,5 @@ export const getMiniCssPlugin = (options: WebpackOptions) => {
     ...miniCssPlugin,
   });
 };
+
+export default getMiniCssPlugin;
