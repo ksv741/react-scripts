@@ -1,14 +1,28 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-const path = require('path');
+
+process.on('unhandledRejection', (err) => {
+  throw err;
+});
+
 const spawn = require('cross-spawn');
 
 const argv = process.argv.slice(2);
+const command = argv[0];
 
+if (!['start', 'build'].includes(command)) {
+  console.log(`Unknown command "${command}"`);
 
-console.log('***************************');
-console.log('argv', argv);
-console.log('***************************');
+  process.exit(1);
+}
+
+const webpackArgv = ['webpack'];
+if (command === 'start') {
+  webpackArgv.push('serve');
+}
+webpackArgv.push(...argv.slice(1));
+
+const result = spawn.sync('npx', webpackArgv, { stdio: 'inherit' });
 
 if (result.signal) {
   if (result.signal === 'SIGKILL') {
