@@ -1,7 +1,7 @@
 {
   "name": "ksv741-react-scripts",
   "version": "0.1.0",
-  "description": "",
+  "description": "Webpack configuration for easy creating React applications",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "source": "./src/webpack/index.ts",
@@ -28,7 +28,8 @@
     "bundle",
     "development",
     "typescript",
-    "react"
+    "react",
+    "babel"
   ],
   "author": "Sergey <ksv741@gmail.com> Krylov",
   "license": "ISC",
