@@ -19,9 +19,9 @@ const getBabelLoader = (options: WebpackOptions): webpack.RuleSetRule | null => 
     options: {
       ...babelLoader,
       presets: [
-        ['@babel/preset-env', { targets: 'defaults', ...babelLoader?.presets?.env }],
-        ['@babel/preset-react', { runtime: 'automatic', ...babelLoader?.presets?.react }],
-        ['@babel/preset-typescript', { ...babelLoader?.presets?.typescript }],
+        [require.resolve('@babel/preset-env'), { targets: 'defaults', ...babelLoader?.presets?.env }],
+        [require.resolve('@babel/preset-react'), { runtime: 'automatic', ...babelLoader?.presets?.react }],
+        [require.resolve('@babel/preset-typescript'), { ...babelLoader?.presets?.typescript }],
       ],
     },
     exclude: path.resolve('node_modules'),

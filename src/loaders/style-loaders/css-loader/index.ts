@@ -56,7 +56,7 @@ const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
               ...postCssLoader?.postcssOptions,
               plugins: [
                 [
-                  'postcss-preset-env',
+                  require.resolve('postcss-preset-env'),
                   {
                     browsers: 'last 2 versions',
                     autoprefixer: true,
