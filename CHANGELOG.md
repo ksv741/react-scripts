@@ -1,4 +1,19 @@
 # ksv741 React Scripts
+### [0.1.2](https://github.com/ksv741/react-scripts/compare/v0.1.0...v0.1.2) (2024-03-29)
+
+
+### 🚀 New Features
+
+* add husky, commit linting ([affd0c0](https://github.com/ksv741/react-scripts/commit/affd0c02185aa2585f654c8da46c9a77c49a5499))
+
+
+### 🛠️ Bug Fixes
+
+* add inks ([6674e6a](https://github.com/ksv741/react-scripts/commit/6674e6ac22f0f4cf66897668b4014d52bad68aa6))
+* fix checking package function ([3e7e77c](https://github.com/ksv741/react-scripts/commit/3e7e77c111034a5817e71da55414acc376efc1c9))
+* fix loading loaders ([b0cba07](https://github.com/ksv741/react-scripts/commit/b0cba07f671048b92198668dfaf5bd73acc2cdc7))
+* **loaders:** fix loaders module resolution ([36f4cd1](https://github.com/ksv741/react-scripts/commit/36f4cd10cd1c6e5737730bded00318e662ef6618))
+
 ### 0.1.1 (2024-03-29)
 
 
