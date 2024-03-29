@@ -5,6 +5,14 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "source": "./src/webpack/index.ts",
+  "bugs": {
+    "url": "https://github.com/ksv741/react-scripts/issues"
+  },
+  "homepage": "https://github.com/ksv741/react-scripts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ksv741/react-scripts"
+  },
   "scripts": {
     "prepare": "rm -rf dist && tsc && tsc-alias",
     "typecheck": "tsc --noEmit",
