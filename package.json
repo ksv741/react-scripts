@@ -16,11 +16,10 @@
   "scripts": {
     "prepare": "rm -rf dist && tsc && tsc-alias",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint --ignore-pattern node_modules --color src"
+    "lint": "eslint --ignore-pattern node_modules --color src",
+    "release": "standard-version"
   },
-  "bin": {
-    "ksv741-react-scripts": "./bin/scripts.js"
-  },
+  "bin": "./bin/scripts.js",
   "engines": {
     "node": ">16"
   },
@@ -86,19 +85,25 @@
     "webpack-dev-server": "5.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
     "eslint": "8.57.0",
-    "eslint-config-ksv741": "0.0.1"
+    "eslint-config-ksv741": "0.0.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "standard-version": "^9.5.0"
   },
   "peerDependencies": {
     "eslint": ">8.0.0",
     "typescript": "^3.6.0"
   },
   "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    },
     "eslint": {
       "optional": true
+    },
+    "typescript": {
+      "optional": true
     }
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
