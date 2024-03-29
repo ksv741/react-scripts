@@ -21,7 +21,7 @@ const getSassLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
       // @ts-ignore
       ...getCssLoader(options).use,
       {
-        loader: 'sass-loader',
+        loader: require.resolve('sass-loader'),
         options: {
           sourceMap: isDev,
           ...sassLoader,

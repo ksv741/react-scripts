@@ -16,7 +16,7 @@ const getSvgrLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
     test: /\.svg$/i,
     issuer: /\.[jt]sx?$/,
     use: [{
-      loader: '@svgr/webpack',
+      loader: require.resolve('@svgr/webpack'),
       options: {
         icon: true,
         ...svgrLoader,
