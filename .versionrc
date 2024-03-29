@@ -1,0 +1,8 @@
+{
+  "header": "# ksv741 React Scripts",
+  "releaseCommitMessageFormat": "build: v{{currentTag}}",
+  "types": [
+      {"type": "feat", "section": "🚀 New Features"},
+      {"type": "fix", "section": "\uD83D\uDEE0\uFE0F Bug Fixes"}
+  ]
+}
