@@ -15,7 +15,7 @@ const getBabelLoader = (options: WebpackOptions): webpack.RuleSetRule | null => 
 
   return {
     test: /\.[j|t]sx?$/,
-    loader: 'babel-loader',
+    loader: require.resolve('babel-loader'),
     options: {
       ...babelLoader,
       presets: [

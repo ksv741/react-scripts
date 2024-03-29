@@ -15,7 +15,7 @@ const getTsLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
 
   return {
     test: /\.[j|t]sx?$/,
-    loader: 'ts-loader',
+    loader: require.resolve('ts-loader'),
     options: {
       ...tsLoader,
     },

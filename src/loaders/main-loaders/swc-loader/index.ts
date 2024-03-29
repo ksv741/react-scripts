@@ -20,7 +20,7 @@ const getSwcLoader = (options: WebpackOptions): webpack.RuleSetRule | null => {
   return {
     test: /\.[j|t]sx?$/,
     exclude: /(node_modules|bower_components)/,
-    loader: 'swc-loader',
+    loader: require.resolve('swc-loader'),
     options: {
       ...swcLoader,
       sync: true,

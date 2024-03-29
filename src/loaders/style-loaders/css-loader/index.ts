@@ -23,7 +23,7 @@ const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
         ? styleLoader === 'off'
           ? null
           : {
-            loader: 'style-loader',
+            loader: require.resolve('style-loader'),
             options: styleLoader,
           }
         : miniCssLoader === 'off'
@@ -35,7 +35,7 @@ const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
       cssLoader === 'off'
         ? null
         : {
-          loader: 'css-loader',
+          loader: require.resolve('css-loader'),
           options: {
             sourceMap: isDev,
             ...cssLoader,
@@ -49,7 +49,7 @@ const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
       postCssLoader === 'off'
         ? null
         : {
-          loader: 'postcss-loader',
+          loader: require.resolve('postcss-loader'),
           options: {
             ...postCssLoader,
             postcssOptions: {

@@ -16,7 +16,7 @@ const getEsbuildLoader = (options: WebpackOptions): webpack.RuleSetRule | null =
 
   return {
     test: /\.[j|t]sx?$/,
-    loader: 'esbuild-loader',
+    loader: require.resolve('esbuild-loader'),
     options: {
       loader: 'tsx',
       jsx: 'automatic',
