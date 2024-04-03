@@ -16,6 +16,20 @@ if (!['start', 'build'].includes(command)) {
   process.exit(1);
 }
 
+switch (command) {
+  case 'start':
+    process.env.NODE_ENV = 'development';
+    break;
+
+  case 'build':
+    process.env.NODE_ENV = 'production';
+    break;
+
+  default:
+    process.env.NODE_ENV = 'development';
+    break;
+}
+
 const webpackArgv = ['webpack'];
 if (command === 'start') {
   webpackArgv.push('serve');
