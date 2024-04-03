@@ -40,6 +40,7 @@ const getCssLoader = (options: WebpackOptions): webpack.RuleSetRule => {
             sourceMap: isDev,
             ...cssLoader,
             modules: {
+              auto: true,
               localIdentName: '[local]--[hash:5]',
               // @ts-ignore
               ...cssLoader?.modules,
