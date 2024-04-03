@@ -1,5 +1,6 @@
 import type webpack from 'webpack';
 import type { WebpackOptions } from 'types';
+import getProvidePlugin from './provide-plugin';
 import getBundleAnalyzerPlugin from './bundle-analyzer-plugin';
 import getCopyPlugin from './copy-plugin';
 import getDefinePlugin from './define-plugin';
@@ -20,6 +21,7 @@ const createPlugins = (options: WebpackOptions): webpack.Configuration['plugins'
   const developmentPlugins = [
     getHtmlPlugin(options),
     getProgressPlugin(options),
+    getProvidePlugin(options),
     getDefinePlugin(options),
     getForkTsCheckerPlugin(options),
     getEslintPlugin(options),
@@ -29,6 +31,7 @@ const createPlugins = (options: WebpackOptions): webpack.Configuration['plugins'
 
   const productionPlugins = [
     getHtmlPlugin(options),
+    getProvidePlugin(options),
     getDefinePlugin(options),
     getMiniCssPlugin(options),
     getForkTsCheckerPlugin(options),
