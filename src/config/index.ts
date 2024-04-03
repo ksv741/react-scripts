@@ -115,11 +115,12 @@ const createConfig = (params?: WebpackOptions): webpack.Configuration => {
     analyze = false,
     mainLoader,
     svgLoader,
-    port = 3000,
     devtool = 'inline-source-map',
     plugins,
     loaders,
+    devServer,
   } = params ?? {};
+
   const {
     assets,
     html,
@@ -135,7 +136,6 @@ const createConfig = (params?: WebpackOptions): webpack.Configuration => {
     analyze,
     mainLoader,
     svgLoader,
-    port,
     paths: {
       assets,
       html,
@@ -147,6 +147,7 @@ const createConfig = (params?: WebpackOptions): webpack.Configuration => {
     },
     plugins,
     loaders,
+    devServer,
   };
 
   const isDev = mode === 'development';

@@ -217,7 +217,6 @@ declare namespace BabelLoader {
 type WebpackOptions = {
   mode: WebpackMode;
   paths: WebpackPaths;
-  port: number;
   mainLoader?: WebpackMainLoaders;
   svgLoader?: 'inline' | 'svgr';
   analyze: boolean;
@@ -233,6 +232,7 @@ type WebpackOptions = {
     copyPlugin?: CopyPlugin.PluginOptions | 'off';
     ignorePlugin?: ConstructorParameters<typeof webpack.IgnorePlugin>[0] | 'off';
     analyzerPlugin?: BundleAnalyzerPlugin.Options | 'off';
+    providePlugin?: ConstructorParameters<typeof webpack.ProvidePlugin>[0] | 'off';
   };
   loaders?: {
     esbuildLoader?: EsbuildLoaderOptions | 'off';
@@ -256,6 +256,7 @@ type WebpackOptions = {
     };
   };
   cache?: webpack.Configuration['cache'] | 'off';
+  devServer?: webpack.Configuration['devServer'];
 };
 
 type WebpackEnv = {
