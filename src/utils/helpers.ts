@@ -1,13 +1,20 @@
 import fs from 'fs';
+import path from 'path';
 import type { PackageJson } from 'types';
 
-export const hasPackage = (packageName: string) => {
+export const getPackageVersion = (packageName: string) => {
   if (!packageName || !process.env.npm_package_json) {
-    return false;
+    return null;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-non-null-assertion
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const packageJson: PackageJson = JSON.parse(fs.readFileSync(process.env.npm_package_json, 'utf8'));
 
-  return Boolean(packageJson.dependencies[packageName] || packageJson.devDependencies[packageName]);
+  return packageJson.dependencies[packageName] || packageJson.devDependencies[packageName];
 };
+
+export const hasPackage = (packageName: string) => Boolean(getPackageVersion(packageName));
+
+export const appDirectory = fs.realpathSync(process.cwd());
+
+export const resolveApp = (relativePath: string) => path.resolve(appDirectory, relativePath);

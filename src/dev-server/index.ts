@@ -3,14 +3,15 @@ import type { WebpackOptions } from 'types';
 
 const createDevServer = (options: WebpackOptions): DevServerConfiguration => {
   const {
-    port,
+    devServer,
   } = options;
 
   return {
-    port,
+    port: 3000,
     open: false,
     historyApiFallback: true,
     hot: true,
+    compress: true,
     client: {
       overlay: {
         errors: true,
@@ -18,6 +19,7 @@ const createDevServer = (options: WebpackOptions): DevServerConfiguration => {
         runtimeErrors: true,
       },
     },
+    ...devServer,
   };
 };
 
