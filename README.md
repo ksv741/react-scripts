@@ -12,7 +12,7 @@
 - [`Кастомизация`](#кастомизация)
   - [`Режим запуска`](#режим-запуска)
   - [`Конфигурация путей`](#конфигурация-путей)
-  - [`Порт`](#порт)
+  - [`DevServer`](#devserver)
   - [`Загрузчики`](#загрузчики)
   - [`Анализ`](#анализ)
   - [`Плагины`](#плагины)
@@ -188,9 +188,25 @@ root.render(
 - `src` - путь до директории с исходными файлами, относительно которого будет находиться файл `entry`  
 По умолчанию - `src`
 
-#### Порт
-- `port` - порт, в котором будет запускаться dev server, для `mode = 'production'` настройка игнорируется  
-По умолчанию: `3000`
+### DevServer
+- `devServer` – объект с настройками devServer, для `mode = 'production'` настройка игнорируется  
+По умолчанию:
+  ```javascript
+  devServer: {
+    port: 3000,
+    open: false,
+    historyApiFallback: true,
+    hot: true,
+    compress: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+        runtimeErrors: true,
+      }
+    }
+  }
+  ```
 
 #### Загрузчики
 - `mainLoader` - главный загрузчик javascript/typescript файлов, доступны `esbuild`, `swc`, `babel`, `ts-loader`     
@@ -213,6 +229,7 @@ root.render(
 - [HTMLWebpackPlugin](https://github.com/jantimon/html-webpack-plugin)
 - [ProgressPlugin](https://webpack.js.org/plugins/progress-plugin), доступен только в режиме `development`
 - [DefinePlugin](https://webpack.js.org/plugins/define-plugin)
+- [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/)
 - [ForkTsCheckerWebpackPlugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin)
 - [ESLintPlugin](https://github.com/webpack-contrib/eslint-webpack-plugin), доступен только в режиме `development`, а также при наличии установленного пакета `eslint`
 - [ReactRefreshWebpackPlugin](https://github.com/pmmmwh/react-refresh-webpack-plugin), доступен только в режиме `development`
@@ -240,6 +257,12 @@ root.render(
     'process.env.APP_VERSION': JSON.stringify(process.env.npm_package_version),
   }
   ```
+- `providePlugin` - настройка плагина [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/)
+  По умолчанию:
+  ```js
+  {
+    process: 'process/browser'
+  }
 - `forkTsCheckerPlugin` - настройка плагина [ForkTsCheckerWebpackPlugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin?tab=readme-ov-file#options)
 - `eslintPlugin` - настройка плагина [ESLintPlugin](https://github.com/webpack-contrib/eslint-webpack-plugin?tab=readme-ov-file#options)  
 По умолчанию: 
