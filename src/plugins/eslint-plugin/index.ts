@@ -1,7 +1,8 @@
 import ESLintPlugin from 'eslint-webpack-plugin';
 import path from 'path';
+import semver from 'semver';
 import type { WebpackOptions } from 'types';
-import { hasPackage } from 'utils/helpers';
+import { getPackageVersion, hasPackage } from 'utils/helpers';
 
 const getEslintPlugin = (options: WebpackOptions) => {
   const {
@@ -11,7 +12,8 @@ const getEslintPlugin = (options: WebpackOptions) => {
     } = {},
   } = options;
 
-  if (!hasPackage('eslint') || eslintPlugin === 'off') {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  if (!hasPackage('eslint') || eslintPlugin === 'off' || semver.lt(getPackageVersion('eslint')!, '8.0.0')) {
     return null;
   }
 
