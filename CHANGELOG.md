@@ -1,4 +1,33 @@
 # ksv741 React Scripts
+## [0.2.0](https://github.com/ksv741/react-scripts/compare/v0.1.0...v0.2.0) (2024-04-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove `port` option, use `devServer` option instead
+
+### 🛠️ Bug Fixes
+
+* add inks ([6674e6a](https://github.com/ksv741/react-scripts/commit/6674e6ac22f0f4cf66897668b4014d52bad68aa6))
+* fix checking package function ([3e7e77c](https://github.com/ksv741/react-scripts/commit/3e7e77c111034a5817e71da55414acc376efc1c9))
+* fix loading loaders ([b0cba07](https://github.com/ksv741/react-scripts/commit/b0cba07f671048b92198668dfaf5bd73acc2cdc7))
+* fix resolve dependency of dependencies ([63f37d6](https://github.com/ksv741/react-scripts/commit/63f37d6c19f469608087df86e301292ad3dd368e))
+* **loaders:** enable usage esm modules ([93159ec](https://github.com/ksv741/react-scripts/commit/93159ec92f94462b0b8fb19e3c5c842adb43d612))
+* **loaders:** fix css modules ([506c929](https://github.com/ksv741/react-scripts/commit/506c929141409b685f38b7e8468eba1b5f144fdd))
+* **loaders:** fix loaders module resolution ([fa6d0d7](https://github.com/ksv741/react-scripts/commit/fa6d0d701e3b21f0a7fbb5f87e794a4ce3689533))
+* **plugins:** disable eslint with version lower 8.0.0 ([3e90849](https://github.com/ksv741/react-scripts/commit/3e908496b3076c405f6056e203e19a11ee4e5a2a))
+* **plugins:** fix global process variable ([83e421d](https://github.com/ksv741/react-scripts/commit/83e421d63ab22f41cb3f5cfb914446e48d794c50))
+
+
+### 🚀 New Features
+
+* add `devServer` option ([b344e3e](https://github.com/ksv741/react-scripts/commit/b344e3ead38419b048a468d32fb216ebb17e128b))
+* add dotenv support ([7059f50](https://github.com/ksv741/react-scripts/commit/7059f50d1ff4697cbb9ef69f30bca7bc2c6c75ad))
+* add editor config ([6a6f8ae](https://github.com/ksv741/react-scripts/commit/6a6f8aeb74c4a7462bc0832d86f33d1b97986660))
+* add github actions ([8f2596e](https://github.com/ksv741/react-scripts/commit/8f2596e25b0e39b038216bf5112859c3f970e093))
+* add husky, commit linting ([affd0c0](https://github.com/ksv741/react-scripts/commit/affd0c02185aa2585f654c8da46c9a77c49a5499))
+* update README.md ([1fba3de](https://github.com/ksv741/react-scripts/commit/1fba3de84986a7c2639b9fbb6579b39be1b2724e))
+
 ### [0.1.2](https://github.com/ksv741/react-scripts/compare/v0.1.0...v0.1.2) (2024-03-29)
 
 
