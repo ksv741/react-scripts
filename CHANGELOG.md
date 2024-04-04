@@ -1,4 +1,11 @@
 # ksv741 React Scripts
+### [0.3.1](https://github.com/ksv741/react-scripts/compare/v0.3.0...v0.3.1) (2024-04-04)
+
+
+### 🛠️ Bug Fixes
+
+* fix yarn fallback auth token ([ea7ce25](https://github.com/ksv741/react-scripts/commit/ea7ce25f834e88b43e9bf22e8d6bde19b25da7ba))
+
 ## [0.3.0](https://github.com/ksv741/react-scripts/compare/v0.1.0...v0.3.0) (2024-04-04)
 
 
