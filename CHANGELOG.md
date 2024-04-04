@@ -1,4 +1,11 @@
 # ksv741 React Scripts
+### [0.2.1](https://github.com/ksv741/react-scripts/compare/v0.2.0...v0.2.1) (2024-04-04)
+
+
+### 🚀 New Features
+
+* add prepack script ([7aa328c](https://github.com/ksv741/react-scripts/commit/7aa328cd3d8d7149aa3a5deb5050a33f468a5d2f))
+
 ## [0.2.0](https://github.com/ksv741/react-scripts/compare/v0.1.0...v0.2.0) (2024-04-04)
 
 
