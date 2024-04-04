@@ -1,4 +1,35 @@
 # ksv741 React Scripts
+## [0.3.0](https://github.com/ksv741/react-scripts/compare/v0.1.0...v0.3.0) (2024-04-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove `port` option, use `devServer` option instead
+
+### 🛠️ Bug Fixes
+
+* add inks ([6674e6a](https://github.com/ksv741/react-scripts/commit/6674e6ac22f0f4cf66897668b4014d52bad68aa6))
+* fix checking package function ([3e7e77c](https://github.com/ksv741/react-scripts/commit/3e7e77c111034a5817e71da55414acc376efc1c9))
+* fix loading loaders ([b0cba07](https://github.com/ksv741/react-scripts/commit/b0cba07f671048b92198668dfaf5bd73acc2cdc7))
+* fix resolve dependency of dependencies ([f01b1d2](https://github.com/ksv741/react-scripts/commit/f01b1d2ec9fe5a73b133533f7ce433bfc8ba212d))
+* **loaders:** enable usage esm modules ([0a759e6](https://github.com/ksv741/react-scripts/commit/0a759e63985a9f6f3f34855615c0524c7c22f9b7))
+* **loaders:** fix css modules ([bfb61db](https://github.com/ksv741/react-scripts/commit/bfb61db6a8e9a4858e2fbc443ad313c3f18b79ce))
+* **loaders:** fix loaders module resolution ([fa6d0d7](https://github.com/ksv741/react-scripts/commit/fa6d0d701e3b21f0a7fbb5f87e794a4ce3689533))
+* **plugins:** disable eslint with version lower 8.0.0 ([c000c72](https://github.com/ksv741/react-scripts/commit/c000c7283099cdd98d63c8df50ca920db2565dc0))
+* **plugins:** fix global process variable ([11fc2d4](https://github.com/ksv741/react-scripts/commit/11fc2d47a7a8b727ccf8419e444191fc90e448c2))
+
+
+### 🚀 New Features
+
+* add `devServer` option ([8246f41](https://github.com/ksv741/react-scripts/commit/8246f41ddef884782e335d28cd04c0a0bca2326a))
+* add dotenv support ([61f5834](https://github.com/ksv741/react-scripts/commit/61f58340ee4d6edc1514bdf35ebaff20fadce14f))
+* add editor config ([ae98853](https://github.com/ksv741/react-scripts/commit/ae98853b51409da005a31528367b25e7ba241015))
+* add git publishing action ([3440e0d](https://github.com/ksv741/react-scripts/commit/3440e0d7d9911c97b188cb5ca7f81a081d4ddcf7))
+* add github actions ([b7b77c2](https://github.com/ksv741/react-scripts/commit/b7b77c2e80bd604d55a4e26ee1d05e8d640d8a3e))
+* add husky, commit linting ([affd0c0](https://github.com/ksv741/react-scripts/commit/affd0c02185aa2585f654c8da46c9a77c49a5499))
+* add prepack script ([3bbbea7](https://github.com/ksv741/react-scripts/commit/3bbbea7b2a0f2f8f135f5e2d87a9387d2a62daa8))
+* update README.md ([b67c8ca](https://github.com/ksv741/react-scripts/commit/b67c8ca19ca13deb8794244e57af3070f84d5256))
+
 ## [0.2.0](https://github.com/ksv741/react-scripts/compare/v0.1.0...v0.2.0) (2024-04-04)
 
 
