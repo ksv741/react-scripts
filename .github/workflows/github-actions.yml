@@ -1,5 +1,7 @@
 name: Test
-run-name: ${{ github.actor }} 🚀
+run-name: Linting and typechecking 🚀
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 on:
   push:
   pull_request:
