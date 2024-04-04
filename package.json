@@ -15,6 +15,7 @@
   },
   "scripts": {
     "prepare": "rm -rf dist && tsc && tsc-alias",
+    "prepack": "rm -rf dist && tsc && tsc-alias",
     "typecheck": "tsc --noEmit",
     "lint": "eslint --ignore-pattern node_modules --color src",
     "release": "standard-version"
